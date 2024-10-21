@@ -1,14 +1,14 @@
 
 if __name__ == '__main__':
-    test_number = '10'
+    test_number = '05'
     sprint_duration = 10
 
-    with open(f'test_data/incomeTasks{test_number}.txt') as file:
+    with open(f'test_data/noPostpones/incomeTasks{test_number}.txt') as file:
         income_tasks = file.readlines()[1:]
         tasks = [[int(x) for x in line.split()] for line in income_tasks if line.strip()]
     print(tasks, ' - Initial tasks list')
 
-    with open(f'test_data/outcomeTasks{test_number}.txt') as file:
+    with open(f'test_data/noPostpones/outcomeTasks{test_number}.txt') as file:
         outcome_tasks = file.read().splitlines()
     expected_tasks_number = int(outcome_tasks[0])
     expected_tasks = [[int(x) for x in line.split()] for line in outcome_tasks[1:]]
