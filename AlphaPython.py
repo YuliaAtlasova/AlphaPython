@@ -1,11 +1,12 @@
 
 if __name__ == '__main__':
-    test_number = '05'
+    test_number = '10'
     sprint_duration = 10
 
     with open(f'test_data/noPostpones/incomeTasks{test_number}.txt') as file:
-        income_tasks = file.readlines()[1:]
-        tasks = [[int(x) for x in line.split()] for line in income_tasks if line.strip()]
+        income_tasks = file.read().splitlines()
+        test_name = income_tasks[0]
+        tasks = [[int(x) for x in line.split()] for line in income_tasks[1:] if line.strip()]
     print(tasks, ' - Initial tasks list')
 
     with open(f'test_data/noPostpones/outcomeTasks{test_number}.txt') as file:
@@ -30,7 +31,7 @@ if __name__ == '__main__':
     easier_tasks = []
     for start_date in tasks_dict:
         easier_tasks.append([start_date, min(tasks_dict[start_date])])
-    print(easier_tasks, ' smaller tasks')
+    print(easier_tasks, ' pick smaller tasks for current startDate')
 
     for curr_task in easier_tasks:
         curr_task[1] = curr_task[0] + curr_task[1] - 1
@@ -45,9 +46,10 @@ if __name__ == '__main__':
         if task[0] > completed_tasks[len(completed_tasks)-1][1]:
             completed_tasks.append(task)
 
-    print(expected_tasks_number, ' - expected complete tasks number')
-    print(expected_tasks, ' - expected_tasks')
-    print(completed_tasks, ' - actual completed tasks')
+    print(f'test description: {test_name}')
+    print(f'{expected_tasks_number} - expected tasks number')
+    print(f'{expected_tasks} - expected tasks list')
+    print(f'{completed_tasks} - actual completed tasks list')
 
     assert expected_tasks_number == len(completed_tasks), f"Expected {expected_tasks_number}, but got {len(completed_tasks)}"
     assert completed_tasks == expected_tasks, "Completed tasks do not match expected output"
