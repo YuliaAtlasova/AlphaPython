@@ -7,11 +7,11 @@ Handles scheduling of tasks based on start date and duration.
 Filters out tasks that cannot be completed within the sprint.
 Compares the actual completed tasks with the expected output.
 Provides detailed logs to track progress and transformations of tasks.
-### Non-Postponeable Version (task_scheduler_no_postpone.py)
+### Non-Postponeable Version (task_scheduler_no_postpones.py)
 Tasks must be completed within the originally assigned start date.
 Tasks are selected based on start and end dates to ensure no overlap, and only the tasks that can fit within the sprint are scheduled.
-### Postponeable Version (task_scheduler_with_postpone.py)
-Tasks can be postponed to a later start date if their originally scheduled date conflicts with previously completed tasks.
+### Postponeable Version (task_scheduler_with_postpones.py)
+Tasks can be postponed to a later start task_scheduler_with_postpones if their originally scheduled date conflicts with previously completed tasks.
 Tasks are adjusted to start on the earliest available day, with the goal of completing as many tasks as possible within the sprint.
 Input and Output File Format
 Both programs read input tasks from a text file and compare the result with the expected output stored in another text file.
@@ -51,15 +51,15 @@ Place the test data files (incomeTasksXX.txt and outcomeTasksXX.txt) in their re
 ### Run the program:
 
 #### For the non-postponeable version
-python AlphaPythonNoPostpones.py
+python task_scheduler_no_postpones.py
 
 #### For the postponeable version
-python AlphaPythonWithPostpones.py
+python task_scheduler_with_postpones.py
 
 The programs will print the processed task list, removed tasks, sorted tasks, and finally the completed tasks. If the result doesn't match the expected output, an assertion error will be raised.
 ### File Structure
-* AlphaPythonNoPostpones.py - Handles non-postponeable tasks.
-* AlphaPythonWithPostpones.py - Handles tasks that can be postponed.
+* task_scheduler_no_postpones.py - Handles non-postponeable tasks.
+* task_scheduler_with_postpones.py - Handles tasks that can be postponed.
 
 test_data/noPostpones/incomeTasksXX.txt - Input task data for the non-postponeable scheduler.
 test_data/noPostpones/outcomeTasksXX.txt - Expected output for the non-postponeable scheduler.
